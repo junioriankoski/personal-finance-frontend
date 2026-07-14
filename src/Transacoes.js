@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-function Transacoes() {
+function Transacoes({atualizar}) {
     const [transacoes, setTransacoes] = useState([])
 
     useEffect(() => {
@@ -10,7 +10,7 @@ function Transacoes() {
         })
             .then(res => res.json())
             .then(dados => setTransacoes(dados))
-    }, [])
+    }, [atualizar])
 
     return (
         <div>
