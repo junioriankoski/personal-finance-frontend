@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function ExcluirTransacao({onExcluida}) {
+function ExcluirTransacao({ onExcluida, atualizar }) {
     const [transacao, setTransacao] = useState('')
     const [transacoes, setTransacoes] = useState([])
 
@@ -11,7 +11,7 @@ function ExcluirTransacao({onExcluida}) {
         })
         .then(res => res.json())
         .then(dados => setTransacoes(dados))
-    }, [])
+    }, [atualizar])
 
     async function excluirTransacao() {
         const token = localStorage.getItem('token')
@@ -25,7 +25,7 @@ function ExcluirTransacao({onExcluida}) {
         if (resposta.ok) {
             onExcluida()
         }
-      }  
+    }  
     return (
         <div>
             <h2>Excluir Transação</h2>

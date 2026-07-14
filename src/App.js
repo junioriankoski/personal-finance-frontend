@@ -4,6 +4,8 @@ import Transacoes from "./Transacoes";
 import AdicionarTransacao from "./AdicionarTransacao";
 import ExcluirTransacao from "./ExcluirTransacao";
 import Saldo from "./Saldo";
+import AdicionarCategoria from "./AdicionarCategoria";
+import ExcluirCategoria from "./ExcluirCategoria";
 
 function App() {
   const [logado, setLogado] = useState(() => {
@@ -23,8 +25,10 @@ function handleLogout() {
         <div>
           <button onClick={handleLogout}>Sair</button>
           <Saldo atualizar={atualizar} />
-          <AdicionarTransacao onAdicionada={() => setAtualizar(a => a + 1)} />
-          <ExcluirTransacao onExcluida={() => setAtualizar(a => a + 1)} />
+          <AdicionarTransacao onAdicionada={() => setAtualizar(a => a + 1)} atualizar={atualizar} />
+          <AdicionarCategoria onAdicionada={() => setAtualizar(a => a +1)}/>
+          <ExcluirCategoria onExcluida={() => setAtualizar(a => a + 1)} atualizar={atualizar} />
+          <ExcluirTransacao onExcluida={() => setAtualizar(a => a + 1)} atualizar={atualizar} />
           <Transacoes atualizar={atualizar} />
         </div>
       ) : (

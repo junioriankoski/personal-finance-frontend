@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 
-function AdicionarTransacao({ onAdicionada}) {
+function AdicionarTransacao({ onAdicionada, atualizar}) {
     const [descricao, setDescricao] = useState('')
     const [valor, setValor] = useState('')
     const [data, setData] = useState('')
-    const [tipo, setTipo] = useState('')
     const [categoria, setCategoria] = useState('')
     const [categorias, setCategorias] = useState([])
 
@@ -18,10 +17,11 @@ function AdicionarTransacao({ onAdicionada}) {
             console.log(dados)
             setCategorias(dados)
         })
-    }, [])
+    }, [atualizar])
 
     async function handleTransacao() {
-        tipo: tipo.toUpperCase()
+        const categoriaEscolhida = categorias.find(c => c.id === Number(categoria))
+        const tipoAuto = categoriaEscolhida ? categoriaEscolhida.tipo : ''
         const token = localStorage.getItem('token')
         const resposta = await fetch('http://localhost:8080/transacoes', {
             method: 'POST',
@@ -29,10 +29,14 @@ function AdicionarTransacao({ onAdicionada}) {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body:JSON.stringify({descricao, valor, data, tipo: tipo.toUpperCase(), categoriaId: categoria})
+            body:JSON.stringify({descricao, valor, data, tipo: tipoAuto, categoriaId: categoria})
         })
         if (resposta.ok) {
             onAdicionada()
+            setDescricao('')
+            setValor('')
+            setData('')
+            setCategoria('')
         }
     }
 
@@ -58,13 +62,6 @@ function AdicionarTransacao({ onAdicionada}) {
                 placeholder="Data"
                 value={data}
                 onChange={e => setData(e.target.value)}
-            />
-            <br />
-            <input
-                type="text"
-                placeholder="Tipo (Receita / Despesa)"
-                value={tipo}
-                onChange={e => setTipo(e.target.value)}
             />
             <br />
             <select
