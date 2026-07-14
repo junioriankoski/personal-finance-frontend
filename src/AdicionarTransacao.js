@@ -21,6 +21,7 @@ function AdicionarTransacao({ onAdicionada}) {
     }, [])
 
     async function handleTransacao() {
+        tipo: tipo.toUpperCase()
         const token = localStorage.getItem('token')
         const resposta = await fetch('http://localhost:8080/transacoes', {
             method: 'POST',
@@ -28,7 +29,7 @@ function AdicionarTransacao({ onAdicionada}) {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body:JSON.stringify({descricao, valor, data, tipo, categoriaId: categoria})
+            body:JSON.stringify({descricao, valor, data, tipo: tipo.toUpperCase(), categoriaId: categoria})
         })
         if (resposta.ok) {
             onAdicionada()
@@ -61,7 +62,7 @@ function AdicionarTransacao({ onAdicionada}) {
             <br />
             <input
                 type="text"
-                placeholder="Tipo"
+                placeholder="Tipo (Receita / Despesa)"
                 value={tipo}
                 onChange={e => setTipo(e.target.value)}
             />

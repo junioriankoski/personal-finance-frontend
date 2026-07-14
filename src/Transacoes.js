@@ -17,8 +17,9 @@ function Transacoes({atualizar}) {
             <h2>Transações</h2>
             {transacoes.map(t => (
                 <div key={t.id}>
-                    <span>{t.descricao}</span>
-                    <span> - R$ {t.valor}</span>
+                    <span>{t.categoriaNome}</span>
+                    <span> - {t.descricao}</span>
+                    <span> - R$ {t.valor.toFixed(2)}</span>
                     <span> - {t.tipo}</span>
                 </div>
             ))}

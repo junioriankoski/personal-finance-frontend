@@ -2,6 +2,7 @@ import { useState } from "react";
 import Login from "./Login";
 import Transacoes from "./Transacoes";
 import AdicionarTransacao from "./AdicionarTransacao";
+import ExcluirTransacao from "./ExcluirTransacao";
 
 function App() {
   const [logado, setLogado] = useState(() => {
@@ -21,6 +22,7 @@ function handleLogout() {
         <div>
           <button onClick={handleLogout}>Sair</button>
           <AdicionarTransacao onAdicionada={() => setAtualizar(a => a + 1)} />
+          <ExcluirTransacao onExcluida={() => setAtualizar(a => a + 1)} />
           <Transacoes atualizar={atualizar} />
         </div>
       ) : (
