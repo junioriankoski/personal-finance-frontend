@@ -14,7 +14,6 @@ function AdicionarTransacao({ onAdicionada, atualizar}) {
         })
         .then(res => res.json())
         .then(dados =>{
-            console.log(dados)
             setCategorias(dados)
         })
     }, [atualizar])

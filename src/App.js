@@ -29,7 +29,7 @@ function handleLogout() {
           <AdicionarCategoria onAdicionada={() => setAtualizar(a => a +1)}/>
           <ExcluirCategoria onExcluida={() => setAtualizar(a => a + 1)} atualizar={atualizar} />
           <ExcluirTransacao onExcluida={() => setAtualizar(a => a + 1)} atualizar={atualizar} />
-          <Transacoes atualizar={atualizar} />
+          <Transacoes atualizar={atualizar} onAtualizada={() => setAtualizar(a => a + 1)} />
         </div>
       ) : (
         <Login onLogin={() => setLogado(true)} />
