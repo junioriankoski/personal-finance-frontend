@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Login from "./Login";
+import Registro from "./Registro";
 import Transacoes from "./Transacoes";
 import AdicionarTransacao from "./AdicionarTransacao";
 import ExcluirTransacao from "./ExcluirTransacao";
@@ -12,6 +13,7 @@ function App() {
     return !!localStorage.getItem('token')
   })
   const [atualizar, setAtualizar] = useState(0)
+  const [mostrarRegistro, setMostrarRegistro] = useState(false)
 
 function handleLogout() {
   localStorage.removeItem('token')
@@ -32,7 +34,16 @@ function handleLogout() {
           <Transacoes atualizar={atualizar} onAtualizada={() => setAtualizar(a => a + 1)} />
         </div>
       ) : (
-        <Login onLogin={() => setLogado(true)} />
+        <div>
+          {mostrarRegistro ? (
+            <Registro onRegistro={() => setLogado(true)} />
+          ) : (
+            <Login onLogin={() => setLogado(true)} />
+          )}
+          <button onClick={() => setMostrarRegistro(!mostrarRegistro)}>
+              {mostrarRegistro ? 'Já tenho conta' : 'Criar conta'}
+          </button>
+        </div>
       )}
     </div>
   );
