@@ -13,10 +13,13 @@ function Saldo({ atualizar}) {
     }, [atualizar])
 
     return (
-        <div>
-            <h2>Saldo: R$ {saldo !== null ? saldo.toFixed(2) : '...'}</h2>
-        </div>
-    )
+    <div className="bg-white rounded-lg p-4 shadow">
+        <h2 className="text-gray-500 text-sm">Saldo atual</h2>
+        <p className="text-3xl font-bold text-green-600">
+            R$ {saldo !== null ? saldo.toFixed(2) : '...'}
+        </p>
+    </div>
+)
 }
 
 export default Saldo
