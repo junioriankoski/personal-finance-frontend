@@ -27,9 +27,9 @@ function ExcluirTransacao({ onExcluida, atualizar }) {
         }
     }  
     return (
-        <div>
-            <h2>Excluir Transação</h2>
-            <select 
+        <div className="bg-white rounded-lg p-4 shadow dark:bg-slate-600">
+            <h2 className="text-black dark:text-white">Excluir Transação</h2>
+            <select className="border rounded px-2 py-1 dark:bg-slate-700 dark:text-white dark:border-slate-500"
                 value={transacao} onChange={e => setTransacao(e.target.value)} >
                     <option value=""> Selecione uma Transação</option>
                     {transacoes.map(t => (
@@ -37,7 +37,7 @@ function ExcluirTransacao({ onExcluida, atualizar }) {
                     ))}
             </select>
             <br />
-            <button onClick={excluirTransacao}>Excluir Transação</button>
+            <button onClick={excluirTransacao} className="bg-red-500 text-white px-0 py-1 rounded hover:bg-red-600">Excluir</button>
         </div>
     )
 }

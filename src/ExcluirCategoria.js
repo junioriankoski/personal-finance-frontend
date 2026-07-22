@@ -27,9 +27,9 @@ function ExcluirCategoria ({ onExcluida, atualizar}) {
         }
     }
     return (
-        <div>
-            <h2>Excluir Categoria</h2>
-            <select 
+        <div className="bg-white rounded-lg p-4 shadow dark:bg-slate-600">
+            <h2 className="text-black dark:text-white">Excluir Categoria</h2>
+            <select className="border rounded px-2 py-1 dark:bg-slate-700 dark:text-white dark:border-slate-500"
                 value={categoria} onChange={e => setCategoria(e.target.value)} >
                     <option value=""> Selecione uma Categoria</option>
                     {categorias.map(c => (
@@ -37,7 +37,7 @@ function ExcluirCategoria ({ onExcluida, atualizar}) {
                     ))}
             </select>
             <br />
-            <button onClick={handleExcluir}>Excluir Categoria</button>
+            <button onClick={handleExcluir} className="bg-red-500 text-white px-0 py-1 rounded hover:bg-red-600">Excluir</button>
         </div>
     )
 }

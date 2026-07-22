@@ -40,13 +40,14 @@ function AdicionarTransacao({ onAdicionada, atualizar}) {
     }
 
     return (
-        <div>
-            <h2>Adicionar Transações</h2>
+        <div className="bg-white rounded-lg p-4 shadow dark:bg-slate-600">
+            <h2 className="text-black dark:text-white">Adicionar Transações</h2>
             <input
                 type="text"
                 placeholder="Descrição"
                 value={descricao}
                 onChange={e => setDescricao(e.target.value)}
+                className="border rounded px-2 py-1 dark:bg-slate-700 dark:text-white dark:border-slate-500"
             />
             <br />
             <input
@@ -54,6 +55,7 @@ function AdicionarTransacao({ onAdicionada, atualizar}) {
                 placeholder="Valor"
                 value={valor}
                 onChange={e => setValor(e.target.value)}
+                className="border rounded px-2 py-1 dark:bg-slate-700 dark:text-white dark:border-slate-500"
             />
             <br />
             <input
@@ -61,9 +63,10 @@ function AdicionarTransacao({ onAdicionada, atualizar}) {
                 placeholder="Data"
                 value={data}
                 onChange={e => setData(e.target.value)}
+                className="border rounded px-2 py-1 dark:bg-slate-700 dark:text-white dark:border-slate-500"
             />
             <br />
-            <select
+            <select className="border rounded px-2 py-1 dark:bg-slate-700 dark:text-white dark:border-slate-500"
                 value={categoria} onChange={e => setCategoria(e.target.value)} >
                     <option value=""> Selecione uma categoria</option>
                     {categorias.map(c => (
@@ -71,7 +74,7 @@ function AdicionarTransacao({ onAdicionada, atualizar}) {
                     ))}
             </select>
             <br />
-            <button onClick={handleTransacao}>Adicionar Transação</button>
+            <button onClick={handleTransacao} className="bg-green-500 text-black px-0 py-1 rounded hover:bg-green-600">Adicionar</button>
         </div>
     )
 }

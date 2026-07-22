@@ -46,10 +46,10 @@ function Transacoes({onAtualizada, atualizar}) {
     }
 
     return (
-        <div>
-            <h2>Transações</h2>
+        <div className="bg-white rounded-lg p-4 shadow dark:bg-slate-600">
+            <h2 className="text-black dark:text-white">Transações</h2>
             {transacoes.map(t => (
-                <div key={t.id}>
+                <div key={t.id} className="text-black dark:text-white">
                     <span>{t.categoriaNome}</span>
                     <span> | {t.descricao}</span>
                     <span> - R$ {t.valor.toFixed(2)}</span>
@@ -61,19 +61,22 @@ function Transacoes({onAtualizada, atualizar}) {
                 </div>
             ))}
             {transacaoSelecionada && (
-                <div>
-                    <h3>Editar Transação</h3>
+                <div className="bg-gray-300 rounded-lg p-4 shadow dark:bg-slate-600">
+                    <h3 className="text-black dark:text-white">Editar Transação</h3>
                     <input
                         type="text"
                         value={transacaoSelecionada.descricao}
                         onChange={e => setTransacaoSelecionada({...transacaoSelecionada, descricao: e.target.value})}
+                        className="border rounded px-2 py-1 dark:bg-slate-700 dark:text-white dark:border-slate-500"
+                        
                     />
                     <input        
                         type="number"
                         value={transacaoSelecionada.valor}
                         onChange={e => setTransacaoSelecionada({...transacaoSelecionada, valor: e.target.value})}
+                        className="border rounded px-2 py-1 dark:bg-slate-700 dark:text-white dark:border-slate-500"
                     />
-                    <select
+                    <select className="border rounded px-2 py-1 dark:bg-slate-700 dark:text-white dark:border-slate-500"
                         value={transacaoSelecionada.categoriaId || ''}
                         onChange={e => setTransacaoSelecionada({...transacaoSelecionada, categoriaId: Number(e.target.value)})}>
                         <option value="">Selecione uma categoria</option>
@@ -81,9 +84,10 @@ function Transacoes({onAtualizada, atualizar}) {
                             <option key={c.id} value={c.id}>{c.nome}</option>
                         ))}
                     </select>
-                    <button onClick={() => setTransacaoSelecionada(null)}>Cancelar</button>
-                    <button onClick={handleSalvar}>Salvar</button>
-                
+                    <div className="flex justify-between mt-3">
+                        <button onClick={() => setTransacaoSelecionada(null)} className="bg-red-500 text-white px-0 py-1 rounded hover:bg-red-600">Cancelar</button>
+                        <button onClick={handleSalvar} className="bg-green-500 text-black px-0 py-1 rounded hover:bg-green-600">Salvar</button>
+                    </div>
                 </div>
             )}
         </div>

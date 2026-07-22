@@ -13,9 +13,9 @@ function Saldo({ atualizar}) {
     }, [atualizar])
 
     return (
-    <div className="bg-white rounded-lg p-4 shadow">
-        <h2 className="text-gray-500 text-sm">Saldo atual</h2>
-        <p className="text-3xl font-bold text-green-600">
+    <div className="bg-white rounded-lg p-4 shadow dark:bg-slate-600">
+        <h2 className="text-gray-500 text-sm dark:text-white">Saldo atual</h2>
+        <p className="text-3xl font-bold text-green-600 dark:text-green-400">
             R$ {saldo !== null ? saldo.toFixed(2) : '...'}
         </p>
     </div>
